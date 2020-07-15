@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import './Search.css'
 
-function Search({ setShow }) {
+const Search = ({ setShow }) => {
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {

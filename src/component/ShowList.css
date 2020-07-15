@@ -1,0 +1,13 @@
+.list-container {
+    margin-top: 25px;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.summary p {
+    font-size: 12px;
+    text-align: justify;
+}

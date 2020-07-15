@@ -4,27 +4,21 @@ import Search from './component/Search'
 import ShowList from './component/ShowList'
 import './App.css';
 
-function App() {
+const App = () => {
 
-  const [loading, setLoading] = useState(false)
   const [show, setShow] = useState('')
   const [showList, setShowList] = useState([])
 
   useEffect(() => {
 
     const getShow = async () => {
-      setLoading(true)
       const res = await axios.get('http://api.tvmaze.com/search/shows?q=' + show, {
         params: {}
       }).catch(err => {
         console.log(err)
       })
 
-      console.log(res.data)
-
       setShowList(res.data)
-
-      setLoading(false)
     }
 
     getShow()
@@ -32,7 +26,7 @@ function App() {
   }, [show])
 
   return (
-    <div className="App">
+    <div className='App'>
       <Search setShow={setShow}/>
       <ShowList showList={showList}/>
     </div>
