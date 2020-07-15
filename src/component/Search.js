@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
+import './Search.css'
 
 function Search({ setShow }) {
 
@@ -12,9 +13,9 @@ function Search({ setShow }) {
     }
 
     return (
-        <div>
+        <div className='search'>
             <form noValidate autoComplete="off">
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" onKeyDown={handleKeyDown} />
+                <TextField id="outlined-basic" label="Search show" variant="outlined" onKeyDown={handleKeyDown} />
             </form>
         </div>
     )
