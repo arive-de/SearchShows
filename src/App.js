@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
+import Search from './component/Search'
+import ShowList from './component/ShowList'
 import './App.css';
 
 function App() {
+
+  const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState('')
+  const [showList, setShowList] = useState([])
+
+  useEffect(() => {
+
+    const getShow = async () => {
+      setLoading(true)
+      const res = await axios.get('http://api.tvmaze.com/search/shows?q=' + show, {
+        params: {}
+      }).catch(err => {
+        console.log(err)
+      })
+
+      console.log(res.data)
+
+      setShowList(res.data)
+
+      setLoading(false)
+    }
+
+    getShow()
+
+  }, [show])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search setShow={setShow}/>
+      <ShowList showList={showList}/>
     </div>
   );
 }
