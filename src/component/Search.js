@@ -7,6 +7,7 @@ function Search({ setShow }) {
         if (e.key === 'Enter') {
             e.preventDefault();
             setShow(e.target.value)
+            e.target.value = ''
         }
     }
 
