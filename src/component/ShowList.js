@@ -5,8 +5,13 @@ import Typography from '@material-ui/core/Typography';
 import unknown from '../assets/unknown.png'
 import parse from 'html-react-parser';
 import './ShowList.css'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const ShowList = ({ showList }) => {
+const ShowList = ({ showList, loading }) => {
+
+    if (loading) {
+        return (<CircularProgress />)
+    }
 
     return (
         <div className='list-container'>{showList.map((show, i) => (
